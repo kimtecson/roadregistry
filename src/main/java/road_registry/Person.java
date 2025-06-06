@@ -242,4 +242,37 @@ public class Person {
                "\nAddress: " + address + "\nBirthdate: " + birthdate +
                "\nSuspended: " + isSuspended + "\nDemerits: " + demeritPoints;
     }
+
+    public static void main(String[] args) {
+    // Step 1: Create a person with valid data
+    Person p = new Person("23!!88!!AB", "Kim", "Tecson", "123|Main|St|Victoria|Australia", "01-01-2005");
+
+    // Step 2: Add to people.txt
+    boolean added = p.addPerson();
+    System.out.println("Person added: " + added);
+
+    // Step 3: Add valid demerit points
+    String result = p.addDemeritPoints("01-01-2024", 5);
+    System.out.println("Demerit add result: " + result);
+
+    // Step 4: Check if file was created and print its contents
+    File file = new File("demerits_23!!88!!AB.txt");
+    if (file.exists()) {
+        System.out.println("✅ Demerits file created.");
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            System.out.println("📄 Demerits file content:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println("  " + line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading demerits file: " + e.getMessage());
+        }
+    } else {
+        System.out.println("Demerits file not found.");
+    }
+
+    // Step 5: Print suspension status
+    System.out.println("Suspended? " + p.isSuspended());
+  }
 }
