@@ -276,3 +276,4 @@ public class Person {
     System.out.println("Suspended? " + p.isSuspended());
   }
 }
+// This is a dummy comment to retrigger GitHub Actions for demo
