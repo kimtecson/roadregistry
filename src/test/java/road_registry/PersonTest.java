@@ -55,7 +55,7 @@ public class PersonTest {
     @Test
     public void testValidDemeritPoints() {
         // Add valid demerit points
-        Person p = new Person("23!!88!!AB", "K", "T", "987|RMIT|St|Victoria|Australia", "01-01-1998");
+        Person p = new Person("24!!88!!AB", "Kimberly", "Tecson", "987|RMIT|St|Victoria|Australia", "01-01-1990");
         p.addPerson();
         String result = p.addDemeritPoints("01-01-2023", 4);
         assertEquals("Success", result);
@@ -107,7 +107,7 @@ public class PersonTest {
     @Test
     public void testChangeIDWithEvenStartDigit() {
         // Attempt to change ID when current ID starts with an even digit
-        Person p = new Person("23!!88!!AB", "Kim", "Doe", "987|RMIT|St|Victoria|Australia", "01-01-1998");
+        Person p = new Person("23!!88!!AB", "Kim", "Tecson", "987|RMIT|St|Victoria|Australia", "01-01-1998");
         p.addPerson();
         boolean result = p.updatePersonalDetails("24!!88!!AB", "Jane", "Doe", "987|RMIT|St|Victoria|Australia", "01-01-1990");
         assertFalse(result);
@@ -116,7 +116,7 @@ public class PersonTest {
     @Test
     public void testChangeDOBWithOtherFields() {
         // Change DOB and another field — should fail
-        Person p = new Person("23!!88!!AB", "Kim", "Doe", "987|RMIT|St|Victoria|Australia", "01-01-1998");
+        Person p = new Person("23!!88!!AB", "Kim", "Tecson", "987|RMIT|St|Victoria|Australia", "01-01-1998");
         p.addPerson();
         boolean result = p.updatePersonalDetails("23!!88!!AB", "Janet", "Doe", "987|RMIT|St|Victoria|Australia", "02-02-1991");
         assertFalse(result);
@@ -125,7 +125,7 @@ public class PersonTest {
     @Test
     public void testChangeAddressUnder18() {
         // Address change for underage person — should fail
-        Person p = new Person("23!!88!!AB", "Jane", "Doe", "987|RMIT|St|Victoria|Australia", "01-01-2010");
+        Person p = new Person("23!!88!!AB", "Kim", "Tecson", "987|RMIT|St|Victoria|Australia", "01-01-2010");
         p.addPerson();
         boolean result = p.updatePersonalDetails("23!!88!!AB", "Jane", "Doe", "124|RMIT|St|Victoria|Australia", "01-01-2010");
         assertFalse(result);
@@ -134,11 +134,10 @@ public class PersonTest {
     @Test
     public void testUpdatePersonWithInvalidAddressFormat() {
 
-        Person p = new Person("23!!88!!AB", "Jane", "Doe", "987|RMIT|St|Victoria|Australia", "01-01-1998");
+        Person p = new Person("23!!88!!AB", "Kim", "Tecson", "987|RMIT|St|Victoria|Australia", "01-01-1998");
         p.addPerson();
         // Try to update with an invalid address format (missing '|' or wrong number of parts)
         boolean result = p.updatePersonalDetails("23!!88!!AB", "Jane", "Doe", "RMIT Street, Melbourne", "01-01-1998");
         assertFalse(result);
     }
 }
-
