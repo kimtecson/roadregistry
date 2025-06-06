@@ -87,7 +87,7 @@ public class person {private String personID;
     }
 
 
-public boolean updatePersonalDetails(String newID, String newFirstName, String newLastName, String newAddress, String newBirthdate) {
+public boolean updatePersonDetails(String newID, String newFirstName, String newLastName, String newAddress, String newBirthdate) {
         if (!isValidPersonID(newID) || !isValidAddress(newAddress) || !isValidBirthdate(newBirthdate)) return false;
 
         // Check age of current person
